@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjuntos</title>
+</head>
+
+<body>
+    <div>
+        Conjunto A { <input type="text" name="conjuntoA" id="conjuntoA">}
+        </br>
+        Conjunto B { <input type="text" name="conjuntoB" id="conjuntoB">}
+
+        </br>
+        <button onclick="validar()">Resultado</button>
+    </div>
+    <script>
+        function validar() {
+            let a = document.getElementById("conjuntoA").value;
+            let b = document.getElementById("conjuntoB").value;
+            b1 = 0
+            CA = ""
+            CB = ""
+            aa = 0;
+            bb = 0;
+
+            conjunA = []
+            conjunB = []
+
+            a = a + ";";
+            b = b + ";";
+
+            valorA = a.length
+            valorB = b.length
+
+            //if (valorA > valorB) {
+            //    mayor = valorA;
+            //    menor = valorB
+            //    aAL = true
+            //} else {
+            //    menor = valorA
+            //    mayor = valorB
+            //    aAL = false
+            //}
+            for (let i = 0; i < valorA; i++) {
+                b1 = i + 1
+                let extraida = a.substring(i, b1);
+                if (extraida == ";" || extraida == "") {
+                    conjunA[aa] = CA
+                    aa += 1
+                    CA = ""
+                } else {
+                    ordenA = extraida
+                    CA = CA + "" + ordenA
+                }
+            }
+
+            for (let t = 0; t < valorB; t++) {
+                b1 = t + 1
+                var extraida2 = b.substring(t, b1);
+                if (extraida2 == ";" || extraida2 == "") {
+                    conjunB[bb] = CB
+                    bb += 1
+                    CB = ""
+                } else {
+                    ordenB = extraida2
+                    CB = CB + "" + ordenB
+                }
+            }
+            conjunA[98] = "";
+            for (let g = 0; g < valorA; g++) {
+                for (let r = 0; r < valorB; r++) {
+                    if (conjunA[g] != "f" || conjunA[g] != "" || conjunA[g] != undefined) {
+                        if (conjunA[g] == conjunB[r]) {
+
+                            if (conjunA[g] != undefined) {
+
+                                console.log("Coincidencia " + conjunA[g])
+                                conjunA[98] = conjunA[98] + "" + conjunA[g] + ";"
+                                conjunA[g] = "f"
+                                conjunB[r] = "f"
+                            }
+                        }
+                    }
+                }
+            }
+            alert("La intercepciones A con B: " + conjunA[98]);
+            conjunA[99] = "";
+            for (let g = 0; g < valorA; g++) {
+                if (conjunA[g] != "f") {
+                    if (conjunA[g] != undefined) {
+                        conjunA[99] = conjunA[99] + "" + conjunA[g] + ";"
+                    }
+
+                }
+            }
+            alert("Conjunto A: " + conjunA[99]);
+            conjunB[99] = ""
+            for (let g = 0; g < valorA; g++) {
+                if (conjunB[g] != "f") {
+                    if (conjunB[g] != undefined) {
+                        conjunB[99] = conjunB[99] + "" + conjunB[g] + ";"
+                    }
+                }
+            }
+            alert("Conjunto B: " + conjunB[99]);
+        }
+    </script>
+</body>
+
+</html>
