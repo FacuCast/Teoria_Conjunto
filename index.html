@@ -7,108 +7,268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conjuntos</title>
 </head>
+<style>
+    @media (max-width: 600px) {
+        h2 {
+            color: #3c1b66;
+            font-weight: normal;
+            font-size: 15px;
+            font-family: Arial;
+            text-transform: uppercase;
+            margin: 0;
+        }
 
-<body>
-    <div>
-        Conjunto A { <input type="text" name="conjuntoA" id="conjuntoA">}
+        button {
+            border: 1px solid #2e518b;
+            /*anchura, estilo y color borde*/
+            padding: 10px;
+            /*espacio alrededor texto*/
+            background-color: #2e518b;
+            /*color botón*/
+            color: #ffffff;
+            /*color texto*/
+            text-decoration: none;
+            /*decoración texto*/
+            text-transform: uppercase;
+            /*capitalización texto*/
+            font-family: 'Helvetica', sans-serif;
+            /*tipografía texto*/
+            border-radius: 50px;
+            /*bordes redondos*/
+        }
+
+        input {
+            background: silver;
+            border: 1px solid #393939;
+            border-radius: 5px 5px 5px 5px;
+            color: #393939;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .contenedor {
+            position: relative;
+        }
+
+        .contenedor .hijo {
+            position: absolute;
+            margin-top: 30%;
+        }
+
+    }
+
+    @media (min-width: 601px) {
+        h2 {
+            color: #3c1b66;
+            font-weight: normal;
+            font-size: 30px;
+            font-family: Arial;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        button {
+            border: 1px solid #2e518b;
+            /*anchura, estilo y color borde*/
+            padding: 10px;
+            /*espacio alrededor texto*/
+            background-color: #2e518b;
+            /*color botón*/
+            color: #ffffff;
+            /*color texto*/
+            text-decoration: none;
+            /*decoración texto*/
+            text-transform: uppercase;
+            /*capitalización texto*/
+            font-family: 'Helvetica', sans-serif;
+            /*tipografía texto*/
+            border-radius: 50px;
+            /*bordes redondos*/
+        }
+
+        input {
+            background: silver;
+            border: 1px solid #393939;
+            border-radius: 5px 5px 5px 5px;
+            color: #393939;
+            font-size: 25px;
+            padding: 5px;
+        }
+
+        .contenedor {
+            position: relative;
+        }
+
+        .contenedor .hijo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+    }
+</style>
+<div class="contenedor">
+    <div class="hijo">
+        <h2>Conjunto A { <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=59"
+                name="conjuntoA" id="conjuntoA" required="required">}</h2>
         </br>
-        Conjunto B { <input type="text" name="conjuntoB" id="conjuntoB">}
+        <h2>Conjunto B { <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=59"
+                name="conjuntoB" id="conjuntoB" required="required">}</h2>
 
         </br>
         <button onclick="validar()">Resultado</button>
     </div>
-    <script>
-        function validar() {
-            let a = document.getElementById("conjuntoA").value;
-            let b = document.getElementById("conjuntoB").value;
-            b1 = 0
-            CA = ""
-            CB = ""
-            aa = 0;
-            bb = 0;
+</div>
+<script>
+    function validar() {
+        let a = document.getElementById("conjuntoA").value;
+        let b = document.getElementById("conjuntoB").value;
 
-            conjunA = []
-            conjunB = []
-
-            a = a + ";";
-            b = b + ";";
-
-            valorA = a.length
-            valorB = b.length
-
-            //if (valorA > valorB) {
-            //    mayor = valorA;
-            //    menor = valorB
-            //    aAL = true
-            //} else {
-            //    menor = valorA
-            //    mayor = valorB
-            //    aAL = false
-            //}
-            for (let i = 0; i < valorA; i++) {
-                b1 = i + 1
-                let extraida = a.substring(i, b1);
-                if (extraida == ";" || extraida == "") {
-                    conjunA[aa] = CA
-                    aa += 1
-                    CA = ""
-                } else {
-                    ordenA = extraida
-                    CA = CA + "" + ordenA
-                }
+        if (a == "" || b == "") {
+            if (a == "") {
+                var campo = document.getElementById("conjuntoA");
+                campo.style.backgroundColor = "red";
+            } else {
+                var campo = document.getElementById("conjuntoA");
+                campo.style.backgroundColor = "393939";
             }
 
-            for (let t = 0; t < valorB; t++) {
-                b1 = t + 1
-                var extraida2 = b.substring(t, b1);
-                if (extraida2 == ";" || extraida2 == "") {
-                    conjunB[bb] = CB
-                    bb += 1
-                    CB = ""
-                } else {
-                    ordenB = extraida2
-                    CB = CB + "" + ordenB
-                }
+            if (b == "") {
+                var campo = document.getElementById("conjuntoB");
+                campo.style.backgroundColor = "red";
+                return
+            } else {
+                var campo = document.getElementById("conjuntoB");
+                campo.style.backgroundColor = "393939";
             }
-            conjunA[98] = "";
-            for (let g = 0; g < valorA; g++) {
-                for (let r = 0; r < valorB; r++) {
-                    if (conjunA[g] != "f" || conjunA[g] != "" || conjunA[g] != undefined) {
-                        if (conjunA[g] == conjunB[r]) {
+            return
+        }
+        var campo = document.getElementById("conjuntoA");
+        campo.style.backgroundColor = "aliceblue";
 
-                            if (conjunA[g] != undefined) {
+        var campo = document.getElementById("conjuntoB");
+        campo.style.backgroundColor = "aliceblue";
+        b1 = 0
+        CA = ""
+        CB = ""
+        aa = 0;
+        bb = 0;
 
-                                console.log("Coincidencia " + conjunA[g])
-                                conjunA[98] = conjunA[98] + "" + conjunA[g] + ";"
-                                conjunA[g] = "f"
-                                conjunB[r] = "f"
-                            }
+        conjunA = []
+        conjunB = []
+
+        a = a + ";";
+        b = b + ";";
+
+        valorA = a.length
+        valorB = b.length
+
+        //if (valorA > valorB) {
+        //    mayor = valorA;
+        //    menor = valorB
+        //    aAL = true
+        //} else {
+        //    menor = valorA
+        //    mayor = valorB
+        //    aAL = false
+        //}
+        for (let i = 0; i < valorA; i++) {
+            b1 = i + 1
+            let extraida = a.substring(i, b1);
+            if (extraida == ";" || extraida == "") {
+                conjunA[aa] = CA
+                aa += 1
+                CA = ""
+            } else {
+                ordenA = extraida
+                CA = CA + "" + ordenA
+            }
+        }
+
+        const tempArray = [...conjunA].sort();
+
+        for (let i = 0; i < tempArray.length; i++) {
+            if (tempArray[i + 1] === tempArray[i]) {
+
+                var campo = document.getElementById("conjuntoA");
+                campo.style.backgroundColor = "red";
+                return
+            }
+        }
+
+        for (let t = 0; t < valorB; t++) {
+            b1 = t + 1
+            var extraida2 = b.substring(t, b1);
+            if (extraida2 == ";" || extraida2 == "") {
+                conjunB[bb] = CB
+                bb += 1
+                CB = ""
+            } else {
+                ordenB = extraida2
+                CB = CB + "" + ordenB
+            }
+        }
+        const tempArray1 = [...conjunB].sort();
+
+        for (let i = 0; i < tempArray1.length; i++) {
+            if (tempArray1[i + 1] === tempArray1[i]) {
+
+                var campo = document.getElementById("conjuntoB");
+                campo.style.backgroundColor = "red";
+                return
+            }
+        }
+
+        conjunA[98] = "";
+        for (let g = 0; g < valorA; g++) {
+            for (let r = 0; r < valorB; r++) {
+                if (conjunA[g] != "f" || conjunA[g] != "" || conjunA[g] != undefined) {
+                    if (conjunA[g] == conjunB[r]) {
+
+                        if (conjunA[g] != undefined) {
+
+                            console.log("Coincidencia " + conjunA[g])
+                            conjunA[98] = conjunA[98] + "" + conjunA[g] + ";"
+                            conjunA[g] = "f"
+                            conjunB[r] = "f"
                         }
                     }
                 }
             }
-            alert("La intercepciones A con B: " + conjunA[98]);
-            conjunA[99] = "";
-            for (let g = 0; g < valorA; g++) {
-                if (conjunA[g] != "f") {
-                    if (conjunA[g] != undefined) {
-                        conjunA[99] = conjunA[99] + "" + conjunA[g] + ";"
-                    }
+        }
+        alert("La intercepciones A con B: " + conjunA[98]);
+        conjunA[99] = "";
+        for (let g = 0; g < valorA; g++) {
+            if (conjunA[g] != "f") {
+                if (conjunA[g] != undefined) {
+                    conjunA[99] = conjunA[99] + "" + conjunA[g] + ";"
+                }
 
-                }
             }
+        }
+
+        if (conjunA[99] == "") {
+            alert("Conjunto A: Es vacio (No contiene elementos)");
+        } else {
             alert("Conjunto A: " + conjunA[99]);
-            conjunB[99] = ""
-            for (let g = 0; g < valorA; g++) {
-                if (conjunB[g] != "f") {
-                    if (conjunB[g] != undefined) {
-                        conjunB[99] = conjunB[99] + "" + conjunB[g] + ";"
-                    }
+        }
+
+        conjunB[99] = ""
+        for (let g = 0; g < valorA; g++) {
+            if (conjunB[g] != "f") {
+                if (conjunB[g] != undefined) {
+                    conjunB[99] = conjunB[99] + "" + conjunB[g] + ";"
                 }
             }
+        }
+
+        if (conjunB[99] == "") {
+            alert("Conjunto B: Es vacio (No contiene elementos)");
+        } else {
             alert("Conjunto B: " + conjunB[99]);
         }
-    </script>
+    }
+</script>
 </body>
 
 </html>
